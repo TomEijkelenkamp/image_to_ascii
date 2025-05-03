@@ -1,12 +1,12 @@
 from PIL import Image, ImageFont, ImageDraw
 import numpy as np
 import svgwrite
-import cairosvg
+import string
 
 Image.MAX_IMAGE_PIXELS = None
 
 # Settings
-ascii_chars = "@%#*+=-:. "
+ascii_chars = string.printable.strip()
 font_path = "C:/Windows/Fonts/consola.ttf"
 font_size = 12
 char_width, char_height = font_size, font_size
@@ -68,8 +68,6 @@ def image_to_ascii_svg(image_path, output_path="ascii_output.svg"):
 
     dwg.save()
     print(f"✅ SVG saved to {output_path}")
-
-    cairosvg.svg2pdf(url="ascii_output.svg", write_to="ascii_output.pdf")
 
 if __name__ == "__main__":
     import sys
